@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HelpDeskWeb.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - FAST HELP</title>
+
+    <!-- Font Awesome para ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* === MENU LATERAL === */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar img {
+            width: 120px;
+            margin-bottom: 30px;
+        }
+
+        /* --- ITENS DO MENU --- */
+               .menu-item {
+            width: 100%;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;        /* alinha ícone e texto verticalmente */
+            justify-content: center;    /* centraliza horizontalmente */
+            gap: 12px;
+            border-radius: 8px;
+            text-align: center;
+}
+        .menu-item:hover {
+            background-color: #e6f0ff;
+            color: #0056b3;
+        }
+
+        .menu-item i {
+            font-size: 18px;
+            color: #0078d7;
+            transition: color 0.3s ease;
+        }
+
+        .menu-item.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .menu-item.active i {
+            color: white;
+        }
+
+        /* === CONTEÚDO PRINCIPAL === */
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* === RODAPÉ === */
+        footer {
+            margin-left: 240px;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* === RESPONSIVIDADE === */
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 10px;
+            }
+
+            .main-content, footer {
+                margin-left: 0;
+                margin-top: 80px;
+                height: auto;
+            }
+
+            .menu-item {
+                padding: 10px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <!-- MENU LATERAL -->
+        <div class="sidebar">
+            <img src="Images/logo.png" alt="Logo FAST HELP" />
+
+            <!-- Coloque a classe "active" no item da página atual -->
+            <a class="menu-item active" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
+            <a class="menu-item" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
+            <a class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
+            <a class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
+            <a class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
+        </div>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+        <!-- RODAPÉ -->
+        <footer>
+            &copy; <%: DateTime.Now.Year %> - FAST HELP
+        </footer>
+    </form>
+</body>
+</html>
