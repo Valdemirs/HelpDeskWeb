@@ -1,10 +1,11 @@
-﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="HelpDeskWeb.Menu" %>
+﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="HelpDeskWeb.Menu" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
         }
 
         .sidebar {
@@ -13,13 +14,14 @@
             left: 0;
             width: 240px;
             height: 100vh;
-            background-color: #f0f8ff; /* azul bem claro */
+            background-color: #f0f8ff;
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 20px;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
 
         .sidebar img {
@@ -50,9 +52,17 @@
             color: #0078d7;
         }
 
+        .menu-item.active {
+            background-color: #0078d7; /* azul escuro */
+            color: #fff; /* texto branco para contraste */
+        }
+
         .main-content {
             margin-left: 240px;
             padding: 30px;
+            min-height: 100vh;
+            background-color: #fff;
+            z-index: 1;
         }
 
         @media (max-width: 600px) {
@@ -65,6 +75,9 @@
             }
 
             .main-content {
+                display_flex 
+                    justify-content: center;
+
                 margin-left: 0;
                 margin-top: 80px;
             }
@@ -79,11 +92,12 @@
 
     <div class="sidebar">
         <img src="Images/logo.png" alt="Logo FAST HELP" />
-        <a class="menu-item" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
+        <a class="menu-item active" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
         <a class="menu-item" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
         <a class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
         <a class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
         <a class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
+         <a class="menu-item" href="Cadastro.aspx"><i class="fas fa-cogs"></i> CADASTRO</a>
     </div>
 
     <div class="main-content">

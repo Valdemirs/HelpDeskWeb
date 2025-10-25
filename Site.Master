@@ -11,12 +11,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
     <style>
+        /* Estilo geral do corpo da página */
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* === MENU LATERAL === */
+        /* Menu lateral fixo à esquerda */
         .sidebar {
             position: fixed;
             top: 0;
@@ -32,13 +33,14 @@
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
         }
 
+        /* Logo no topo do menu */
         .sidebar img {
             width: 120px;
             margin-bottom: 30px;
         }
 
-        /* --- ITENS DO MENU --- */
-               .menu-item {
+        /* Estilo dos links do menu */
+        .menu-item {
             width: 100%;
             padding: 15px 30px;
             cursor: pointer;
@@ -47,23 +49,27 @@
             color: #333;
             text-decoration: none;
             display: flex;
-            align-items: center;        /* alinha ícone e texto verticalmente */
-            justify-content: center;    /* centraliza horizontalmente */
+            align-items: center;
+            justify-content: center;
             gap: 12px;
             border-radius: 8px;
             text-align: center;
-}
+        }
+
+        /* Efeito ao passar o mouse nos itens do menu */
         .menu-item:hover {
             background-color: #e6f0ff;
             color: #0056b3;
         }
 
+        /* Ícones do menu */
         .menu-item i {
             font-size: 18px;
             color: #0078d7;
             transition: color 0.3s ease;
         }
 
+        /* Estilo do item ativo do menu */
         .menu-item.active {
             background-color: #0078d7;
             color: white;
@@ -73,27 +79,27 @@
             color: white;
         }
 
-        /* === CONTEÚDO PRINCIPAL === */
+        /* Área principal do conteúdo */
         .main-content {
-            margin-left: 240px;
+            margin-left: 280px;
             padding: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
         }
 
-        /* === RODAPÉ === */
+        /* Rodapé fixo abaixo do conteúdo */
         footer {
-            margin-left: 240px;
+            margin-left: 280px;
             padding: 20px;
             text-align: center;
             font-size: 14px;
             color: #777;
         }
 
-        /* === RESPONSIVIDADE === */
+        /* Estilo responsivo para telas pequenas */
         @media (max-width: 600px) {
             .sidebar {
                 width: 100%;
@@ -115,6 +121,48 @@
                 justify-content: center;
             }
         }
+
+        /* Estilo do container dos formulários */
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Estilo dos campos de entrada */
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        /* Estilo do botão de cadastro */
+        .btn-cadastrar {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Efeito hover no botão */
+        .btn-cadastrar:hover {
+            background-color: #005a9e;
+        }
+
+        /* Estilo da mensagem de sucesso */
+        .mensagem {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
     </style>
 </head>
 <body>
@@ -122,13 +170,12 @@
         <!-- MENU LATERAL -->
         <div class="sidebar">
             <img src="Images/logo.png" alt="Logo FAST HELP" />
-
-            <!-- Coloque a classe "active" no item da página atual -->
-            <a class="menu-item active" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
-            <a class="menu-item" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
-            <a class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
-            <a class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
-            <a class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
+            <a id="linkDashboard" runat="server" class="menu-item" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
+            <a id="linkChamados" runat="server" class="menu-item" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
+            <a id="linkEquipe" runat="server" class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
+            <a id="linkClientes" runat="server" class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
+            <a id="linkConfiguracao" runat="server" class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
+            <a id="linkCadastro" runat="server" class="menu-item" href="Cadastro.aspx"><i class="fas fa-user-plus"></i> CADASTRO</a>
         </div>
 
         <!-- CONTEÚDO PRINCIPAL -->

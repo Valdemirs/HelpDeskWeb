@@ -1,6 +1,11 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HelpDeskWeb._Default" %>
+﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="false" CodeBehind="Login.aspx.cs" Inherits="HelpDeskWeb.Login" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<!DOCTYPE html>
+<html lang="pt">
+<head runat="server">
+    <title>Login - FAST HELP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         .login-container {
             max-width: 700px;
@@ -82,26 +87,27 @@
             }
         }
     </style>
+</head>
+<body>
+    <form runat="server">
+        <div class="login-container">
+            <div class="login-flex">
+                <div class="logo-side">
+                    <img src="Images/logo.png" alt="Logo FAST HELP" />
+                </div>
+                <div class="form-side">
+                    <asp:Label ID="lblUsuario" runat="server" Text="Usuário:" AssociatedControlID="txtUsuario" />
+                    <asp:TextBox ID="txtUsuario" runat="server" />
 
-    <div class="login-container">
-        <div class="login-flex">
-            <!-- Coluna da imagem -->
-            <div class="logo-side">
-                <img src="Images/logo.png" alt="Logo FAST HELP" />
-            </div>
+                    <asp:Label ID="lblSenha" runat="server" Text="Senha:" AssociatedControlID="txtSenha" />
+                    <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" />
 
-            <!-- Coluna do formulário -->
-            <div class="form-side">
-                <asp:Label ID="lblUsuario" runat="server" Text="Usuário:" AssociatedControlID="txtUsuario" />
-                <asp:TextBox ID="txtUsuario" runat="server" />
+                    <asp:Button ID="btnEntrar" runat="server" Text="Entrar!" CssClass="asp-button" OnClick="btnEntrar_Click" />
 
-                <asp:Label ID="lblSenha" runat="server" Text="Senha:" AssociatedControlID="txtSenha" />
-                <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" />
-
-                <asp:Button ID="btnEntrar" runat="server" Text="Entrar!" CssClass="asp-button" OnClick="btnEntrar_Click" />
-
-                <asp:Label ID="lblMensagemErro" runat="server" CssClass="error-message" Visible="False" />
+                    <asp:Label ID="lblMensagemErro" runat="server" CssClass="error-message" Visible="False" />
+                </div>
             </div>
         </div>
-    </div>
-</asp:Content>
+    </form>
+</body>
+</html>

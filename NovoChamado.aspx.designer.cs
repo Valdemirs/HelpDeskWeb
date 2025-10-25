@@ -11,70 +11,61 @@ namespace HelpDeskWeb
 {
 
 
-    public partial class SiteMaster
+    public partial class NovoChamado
     {
 
         /// <summary>
-        /// Controle linkDashboard.
+        /// Controle txtAssunto.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkDashboard;
+        protected global::System.Web.UI.WebControls.TextBox txtAssunto;
 
         /// <summary>
-        /// Controle linkChamados.
+        /// Controle txtDescricao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkChamados;
+        protected global::System.Web.UI.WebControls.TextBox txtDescricao;
 
         /// <summary>
-        /// Controle linkEquipe.
+        /// Controle ddlCategoria.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkEquipe;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
 
         /// <summary>
-        /// Controle linkClientes.
+        /// Controle ddlPrioridade.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkClientes;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrioridade;
 
         /// <summary>
-        /// Controle linkConfiguracao.
+        /// Controle fuAnexo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkConfiguracao;
+        protected global::System.Web.UI.WebControls.FileUpload fuAnexo;
 
         /// <summary>
-        /// Controle linkCadastro.
+        /// Controle btnEnviar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkCadastro;
-
-        /// <summary>
-        /// Controle MainContent.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Button btnEnviar;
     }
 }

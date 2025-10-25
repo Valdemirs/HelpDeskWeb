@@ -11,70 +11,61 @@ namespace HelpDeskWeb
 {
 
 
-    public partial class SiteMaster
+    public partial class CadastroCliente
     {
 
         /// <summary>
-        /// Controle linkDashboard.
+        /// Controle txtEmpresa.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkDashboard;
+        protected global::System.Web.UI.WebControls.TextBox txtEmpresa;
 
         /// <summary>
-        /// Controle linkChamados.
+        /// Controle txtCNPJ.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkChamados;
+        protected global::System.Web.UI.WebControls.TextBox txtCNPJ;
 
         /// <summary>
-        /// Controle linkEquipe.
+        /// Controle txtResponsavel.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkEquipe;
+        protected global::System.Web.UI.WebControls.TextBox txtResponsavel;
 
         /// <summary>
-        /// Controle linkClientes.
+        /// Controle txtEmail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkClientes;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// Controle linkConfiguracao.
+        /// Controle btnCadastrar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkConfiguracao;
+        protected global::System.Web.UI.WebControls.Button btnCadastrar;
 
         /// <summary>
-        /// Controle linkCadastro.
+        /// Controle lblMensagem.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkCadastro;
-
-        /// <summary>
-        /// Controle MainContent.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Label lblMensagem;
     }
 }

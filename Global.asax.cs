@@ -17,9 +17,14 @@ namespace HelpDeskWeb
         {
             // Código que é executado na inicialização do aplicativo
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        private static Action<HttpConfiguration> GetRegister()
+        {
+            return WebApiConfig.Register;
         }
     }
 }
