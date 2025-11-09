@@ -11,7 +11,7 @@ namespace HelpDeskWeb
 {
 
 
-    public partial class Login
+    public partial class index
     {
 
         /// <summary>

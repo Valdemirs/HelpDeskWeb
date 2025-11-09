@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace HelpDeskWeb
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //HttpResponse.redirect();
         }
     }
 }

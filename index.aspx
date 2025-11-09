@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind=".aspx.cs" Inherits="HelpDeskWeb.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="HelpDeskWeb.index" %>
 
 <!DOCTYPE html>
 
