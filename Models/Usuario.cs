@@ -5,14 +5,14 @@ namespace HelpDeskWeb.Models
 {
     public class Usuario
     {
-        private int ID_Usuario { get; set; }
+        public int ID_Usuario { get; set; }
 
-        private string Nome {  get; set; }
+        public string Nome {  get; set; }
 
-        private string Email { get; set; }
+        public string Email { get; set; }
 
-        private string Senha { get; set; }
+        public string Senha { get; set; }
 
-        private DateTime Data_Cadastro { get; set; }
+        public DateTime? Data_Cadastro { get; set; }
     }
 }
