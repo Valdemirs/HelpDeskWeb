@@ -1,88 +1,89 @@
-﻿<%@ Page Title="Cadastro de Usuário" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CadastroUsuario.aspx.cs" Inherits="HelpDeskWeb.CadastroUsuario" %>
+﻿<%@ Page Title="Cadastrar Usuário" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CadastrarUsuario.aspx.cs" Inherits="HelpDeskWeb.CadastrarUsuario" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
+        h2 {
+            font-size: 26px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
         .form-container {
-            max-width: 500px;
-            margin: 60px auto;
+            max-width: 600px;
+            margin: 0 auto;
             background-color: #f9f9f9;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
+            margin-bottom: 20px;
         }
 
         .form-group label {
+            display: block;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            color: #333;
         }
 
-        .form-control {
+        .form-group input, .form-group select {
+            width: 100%;
             padding: 10px;
-            border-radius: 6px;
             border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
         }
 
-        .btn-cadastrar {
+        .btn-submit {
             background-color: #0078d7;
             color: white;
-            padding: 12px;
             border: none;
-            border-radius: 6px;
-            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 4px;
             cursor: pointer;
-            align-self: center;
-            width: 100%;
         }
 
-        .btn-cadastrar:hover {
+        .btn-submit:hover {
             background-color: #005a9e;
-        }
-
-        .mensagem {
-            text-align: center;
-            font-weight: bold;
-            color: green;
-            margin-top: 10px;
         }
     </style>
 
+    <h2>Cadastrar Usuário</h2>
+
     <div class="form-container">
-        <h2>Cadastro de Usuário</h2>
+        <asp:Label ID="lblMensagem" runat="server" ForeColor="Green" Font-Bold="true" />
 
         <div class="form-group">
-            <label for="txtNome">Nome</label>
-            <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" />
+            <label for="txtNome">Nome:</label>
+            <asp:TextBox ID="txtNome" runat="server" />
         </div>
 
         <div class="form-group">
-            <label for="txtEmail">Email</label>
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" />
+            <label for="txtLogin">Login:</label>
+            <asp:TextBox ID="txtLogin" runat="server" />
         </div>
 
         <div class="form-group">
-            <label for="txtSenha">Senha</label>
-            <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" />
+            <label for="txtSenha">Senha:</label>
+            <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" />
         </div>
 
         <div class="form-group">
-            <label for="ddlPerfil">Perfil</label>
-            <asp:DropDownList ID="ddlPerfil" runat="server" CssClass="form-control">
-                <asp:ListItem Text="Usuário" Value="Usuario" />
-                <asp:ListItem Text="Técnico" Value="Tecnico" />
+            <label for="ddlPerfil">Perfil:</label>
+            <asp:DropDownList ID="ddlPerfil" runat="server">
+                <asp:ListItem Text="Selecione" Value="" />
                 <asp:ListItem Text="Administrador" Value="Admin" />
+                <asp:ListItem Text="Técnico" Value="Tecnico" />
+                <asp:ListItem Text="Usuário" Value="Usuario" />
             </asp:DropDownList>
         </div>
 
-        <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" CssClass="btn-cadastrar" OnClick="btnCadastrar_Click" />
-        <asp:Label ID="lblMensagem" runat="server" CssClass="mensagem" />
+        <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" CssClass="btn-submit" OnClick="btnCadastrar_Click" />
     </div>
 </asp:Content>

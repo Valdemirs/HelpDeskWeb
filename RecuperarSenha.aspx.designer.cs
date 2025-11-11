@@ -11,35 +11,26 @@ namespace HelpDeskWeb
 {
 
 
-    public partial class CadastroFornecedor
+    public partial class RecuperarSenha
     {
 
         /// <summary>
-        /// Controle txtEmpresa.
+        /// Controle form1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmpresa;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Controle txtServico.
+        /// Controle lblEmail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtServico;
-
-        /// <summary>
-        /// Controle txtContato.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContato;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
         /// Controle txtEmail.
@@ -51,13 +42,13 @@ namespace HelpDeskWeb
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// Controle btnCadastrar.
+        /// Controle btnRecuperar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCadastrar;
+        protected global::System.Web.UI.WebControls.Button btnRecuperar;
 
         /// <summary>
         /// Controle lblMensagem.

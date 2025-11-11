@@ -3,7 +3,7 @@ using System.Web.UI;
 
 namespace HelpDeskWeb
 {
-    public partial class CadastroCliente : Page
+    public partial class CadastrarCliente : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -11,15 +11,13 @@ namespace HelpDeskWeb
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            // Simulação de cadastro
-            string empresa = txtEmpresa.Text;
-            string cnpj = txtCNPJ.Text;
-            string responsavel = txtResponsavel.Text;
-            string email = txtEmail.Text;
+            string nome = txtNome.Text.Trim();
+            string empresa = txtEmpresa.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string telefone = txtTelefone.Text.Trim();
 
-            // Aqui você pode salvar no banco de dados
-
-            lblMensagem.Text = $"Cliente '{empresa}' cadastrado com sucesso!";
+            // Aqui você pode salvar os dados no banco ou exibir uma mensagem
+            lblMensagem.Text = $"Cliente '{nome}' cadastrado com sucesso!";
         }
     }
 }

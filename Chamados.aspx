@@ -2,171 +2,129 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        h2 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-transform: uppercase;
         }
 
-        .layout-wrapper {
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .sidebar {
-            width: 240px;
-            background-color: #f0f8ff;
-            color: #333;
+        .chamado-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            flex-shrink: 0;
+            gap: 40px;
         }
 
-        .sidebar img {
-            width: 120px;
-            margin-bottom: 30px;
+        .chamado-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .menu-item {
-            width: 100%;
-            padding: 15px 20px;
-            text-align: left;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            color: #333;
-            text-decoration: none;
+        .chamado-section h3 {
+            font-size: 20px;
+            color: #0078d7;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .menu-item:hover {
-            background-color: #e0ecf8;
+        .chamado-section h3 i {
+            font-size: 22px;
         }
 
-        .menu-item i {
-            font-size: 18px;
-            color: #0078d7;
-        }
-
-        .menu-item.active {
-            background-color: #0078d7;
-            color: #fff;
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 30px;
-            background-color: #fff;
-            overflow-y: auto;
-        }
-
-        .btn-novo {
-            background-color: #0078d7;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .btn-novo:hover {
-            background-color: #005a9e;
-        }
-
-        .tabela-chamados {
+        .grid-style {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .tabela-chamados th,
-        .tabela-chamados td {
-            border: 1px solid #ccc;
+        .grid-style th {
+            background-color: #e6f0fa;
+            color: #333;
             padding: 10px;
             text-align: left;
+            font-weight: bold;
         }
 
-        .tabela-chamados th {
-            background-color: #f0f8ff;
+        .grid-style td {
+            padding: 10px;
+            border-top: 1px solid #f0f0f0;
         }
 
-        @media (max-width: 600px) {
-            .layout-wrapper {
-                flex-direction: column;
-            }
+        .grid-style tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 10px;
-                box-shadow: none;
-            }
+        .btn-atender {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
-            .main-content {
-                margin-top: 10px;
-                padding: 20px;
-            }
-
-            .menu-item {
-                padding: 10px;
-                text-align: center;
-                justify-content: center;
-            }
+        .btn-atender:hover {
+            background-color: #005a9e;
         }
     </style>
 
-     <div class="sidebar">
-      <img src="Images/logo.png" alt="Logo FAST HELP" />
-      <a class="menu-item" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
-      <a class="menu-item active" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
-      <a class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
-      <a class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
-      <a class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
-       <a class="menu-item" href="Cadastro.aspx"><i class="fas fa-cogs"></i> CADASTRO</a>
-  </div>
+    <h2>Chamados</h2>
 
-        <div class="main-content">
-            <h2>Meus Chamados</h2>
-            <a href="NovoChamado.aspx" class="btn-novo">+ Novo Chamado</a>
+    <div class="chamado-container">
+        <!-- Chamados Pendentes -->
+        <div class="chamado-section">
+            <h3><i class="fas fa-hourglass-start"></i> Pendentes</h3>
+            <asp:GridView ID="GridPendentes" runat="server" AutoGenerateColumns="False" CssClass="grid-style" OnRowCommand="Grid_RowCommand">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="ID" />
+                    <asp:BoundField DataField="Titulo" HeaderText="Título" />
+                    <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button ID="btnAtender" runat="server" Text="Atender" CssClass="btn-atender"
+                                CommandName="Atender" CommandArgument='<%# Eval("Id") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
 
-            <table class="tabela-chamados">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Assunto</th>
-                        <th>Status</th>
-                        <th>Data</th>
-                        <th>Prioridade</th>
-                        <th>Responsável</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Erro no sistema de login</td>
-                        <td>Aberto</td>
-                        <td>18/10/2025</td>
-                        <td>Alta</td>
-                        <td>João Silva</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Solicitação de acesso ao servidor</td>
-                        <td>Em andamento</td>
-                        <td>17/10/2025</td>
-                        <td>Média</td>
-                        <td>Maria Souza</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Chamados em Análise -->
+        <div class="chamado-section">
+            <h3><i class="fas fa-search"></i> Em Análise</h3>
+            <asp:GridView ID="GridAnalise" runat="server" AutoGenerateColumns="False" CssClass="grid-style">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="ID" />
+                    <asp:BoundField DataField="Titulo" HeaderText="Título" />
+                    <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                </Columns>
+            </asp:GridView>
+        </div>
+
+        <!-- Chamados Concluídos -->
+        <div class="chamado-section">
+            <h3><i class="fas fa-check-circle"></i> Concluídos</h3>
+            <asp:GridView ID="GridConcluidos" runat="server" AutoGenerateColumns="False" CssClass="grid-style">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="ID" />
+                    <asp:BoundField DataField="Titulo" HeaderText="Título" />
+                    <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                </Columns>
+            </asp:GridView>
         </div>
     </div>
 </asp:Content>

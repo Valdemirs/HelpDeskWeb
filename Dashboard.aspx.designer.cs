@@ -11,7 +11,7 @@ namespace HelpDeskWeb
 {
 
 
-    public partial class Menu
+    public partial class Dashboard
     {
     }
 }

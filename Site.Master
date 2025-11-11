@@ -1,192 +1,228 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HelpDeskWeb.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="HelpDeskWeb.SiteMaster" %>
 
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head runat="server">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - FAST HELP</title>
+    <title>FAST HELP</title>
 
-    <!-- Font Awesome para ícones -->
+    <!-- Fonte moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet" />
+    <!-- Ícones Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+
     <style>
-        /* Estilo geral do corpo da página */
         body {
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
         }
 
-        /* Menu lateral fixo à esquerda */
+        /* ===== MENU LATERAL ===== */
         .sidebar {
+            width: 80px; /* largura padrão (fechada) */
+            background-color: #f0f8ff;
+            transition: width 0.3s ease;
             position: fixed;
             top: 0;
+            bottom: 0;
             left: 0;
-            width: 280px;
-            height: 100vh;
-            background-color: #f0f8ff;
-            color: #333;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: 30px;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
         }
 
-        /* Logo no topo do menu */
-        .sidebar img {
-            width: 120px;
-            margin-bottom: 30px;
+        /* Quando o menu é expandido */
+        .sidebar:hover {
+            width: 240px;
         }
 
-        /* Estilo dos links do menu */
+        /* ===== LOGO ===== */
+        .sidebar img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin: 0 auto 40px auto; /* centraliza a logo */
+            transition: width 0.3s ease, height 0.3s ease;
+            display: block;
+        }
+
+        .sidebar:hover img {
+            width: 120px;
+            height: auto;
+            margin-left: 20px;
+        }
+
+        /* ===== BOTÕES DO MENU ===== */
         .menu-item {
             width: 100%;
-            padding: 15px 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            color: #333;
-            text-decoration: none;
+            padding: 14px 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            border-radius: 8px;
+            justify-content: flex-start; /* deixa ícones mais pra direita */
+            gap: 18px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background-color 0.3s ease, padding-left 0.3s ease, border-radius 0.3s ease;
+            white-space: nowrap;
+            padding-left: 20px; /* empurra o conteúdo mais pra direita */
+            border-radius: 10px; /* formato arredondado padrão */
+        }
+
+        /* Quando a barra expande no hover */
+        .sidebar:hover .menu-item {
+            justify-content: flex-start;
+            padding-left: 30px; /* ícones e texto mais bem posicionados */
+        }
+
+        /* Ícones */
+        .menu-item i {
+            font-size: 22px;
+            color: #0078d7;
+            width: 28px;
             text-align: center;
         }
 
-        /* Efeito ao passar o mouse nos itens do menu */
+        /* Texto dos botões (aparece no hover) */
+        .menu-item span {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar:hover .menu-item span {
+            opacity: 1;
+        }
+
+        /* ===== EFEITOS DE HOVER E ATIVO ===== */
         .menu-item:hover {
-            background-color: #e6f0ff;
-            color: #0056b3;
+            background-color: #e0ecf8;
+            border-radius: 12px; /* arredondado ao passar o mouse */
         }
 
-        /* Ícones do menu */
-        .menu-item i {
-            font-size: 18px;
-            color: #0078d7;
-            transition: color 0.3s ease;
-        }
-
-        /* Estilo do item ativo do menu */
         .menu-item.active {
-            background-color: #0078d7;
+            background-color: #004a99;
             color: white;
+            border-radius: 12px; /* arredondado também quando ativo */
         }
 
         .menu-item.active i {
             color: white;
         }
 
-        /* Área principal do conteúdo */
+        /* ===== CONTEÚDO PRINCIPAL ===== */
         .main-content {
-            margin-left: 280px;
+            margin-left: 80px;
             padding: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
+            transition: margin-left 0.3s ease;
         }
 
-        /* Rodapé fixo abaixo do conteúdo */
-        footer {
-            margin-left: 280px;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
+        /* Quando o menu expande */
+        .sidebar:hover ~ .main-content {
+            margin-left: 240px;
         }
 
-        /* Estilo responsivo para telas pequenas */
-        @media (max-width: 600px) {
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            /* Torna o menu horizontal no topo */
             .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: auto;
                 width: 100%;
-                height: auto;
+                height: 70px;
                 flex-direction: row;
                 justify-content: space-around;
+                align-items: center;
                 padding: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
-            .main-content, footer {
+            /* Desativa o efeito de expandir */
+            .sidebar:hover {
+                width: 100%;
+            }
+
+            /* Ícones centralizados no topo */
+            .menu-item {
+                justify-content: center;
+                padding-left: 0;
+                gap: 8px;
+                border-radius: 10px;
+            }
+
+            /* Esconde o texto nos botões */
+            .menu-item span {
+                display: none;
+            }
+
+            .sidebar img {
+                width: 50px;
+                margin: 0;
+            }
+
+            /* Ajusta o conteúdo principal para descer abaixo do menu */
+            .main-content {
                 margin-left: 0;
                 margin-top: 80px;
-                height: auto;
+                padding: 20px;
             }
-
-            .menu-item {
-                padding: 10px;
-                text-align: center;
-                justify-content: center;
-            }
-        }
-
-        /* Estilo do container dos formulários */
-        .form-container {
-            max-width: 600px;
-            margin: 40px auto;
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        /* Estilo dos campos de entrada */
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-        /* Estilo do botão de cadastro */
-        .btn-cadastrar {
-            background-color: #0078d7;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* Efeito hover no botão */
-        .btn-cadastrar:hover {
-            background-color: #005a9e;
-        }
-
-        /* Estilo da mensagem de sucesso */
-        .mensagem {
-            margin-top: 20px;
-            font-weight: bold;
-            color: green;
         }
     </style>
 </head>
+
 <body>
-    <form runat="server">
-        <!-- MENU LATERAL -->
+    <form id="form1" runat="server">
+
+        <!-- ===== MENU LATERAL ===== -->
         <div class="sidebar">
             <img src="Images/logo.png" alt="Logo FAST HELP" />
-            <a id="linkDashboard" runat="server" class="menu-item" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
-            <a id="linkChamados" runat="server" class="menu-item" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
-            <a id="linkEquipe" runat="server" class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
-            <a id="linkClientes" runat="server" class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
-            <a id="linkConfiguracao" runat="server" class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
-            <a id="linkCadastro" runat="server" class="menu-item" href="Cadastro.aspx"><i class="fas fa-user-plus"></i> CADASTRO</a>
+
+            <a id="linkDashboard" runat="server" class="menu-item" href="Dashboard.aspx">
+                <i class="fas fa-chart-line"></i>
+                <span>DASHBOARD</span>
+            </a>
+
+            <a id="linkChamados" runat="server" class="menu-item" href="Chamados.aspx">
+                <i class="fas fa-ticket-alt"></i>
+                <span>CHAMADOS</span>
+            </a>
+
+            <a id="linkEquipe" runat="server" class="menu-item" href="Equipe.aspx">
+                <i class="fas fa-users"></i>
+                <span>EQUIPE</span>
+            </a>
+
+            <a id="linkClientes" runat="server" class="menu-item" href="Clientes.aspx">
+                <i class="fas fa-user-tie"></i>
+                <span>CLIENTES</span>
+            </a>
+
+            <a id="linkConfiguracao" runat="server" class="menu-item" href="Configuracao.aspx">
+                <i class="fas fa-cogs"></i>
+                <span>CONFIGURAÇÃO</span>
+            </a>
+
+            <a id="linkCadastro" runat="server" class="menu-item" href="Cadastro.aspx">
+                <i class="fas fa-user-plus"></i>
+                <span>CADASTRO</span>
+            </a>
         </div>
 
-        <!-- CONTEÚDO PRINCIPAL -->
+        <!-- ===== CONTEÚDO PRINCIPAL ===== -->
         <div class="main-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
 
-        <!-- RODAPÉ -->
-        <footer>
-            &copy; <%: DateTime.Now.Year %> - FAST HELP
-        </footer>
     </form>
 </body>
 </html>

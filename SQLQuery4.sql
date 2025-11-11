@@ -1,0 +1,1 @@
+﻿SELECT Email, Senha FROM Usuarios;

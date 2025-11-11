@@ -3,7 +3,7 @@ using System.Web.UI;
 
 namespace HelpDeskWeb
 {
-    public partial class CadastroUsuario : Page
+    public partial class CadastrarUsuario : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -11,15 +11,21 @@ namespace HelpDeskWeb
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            // Simulação de cadastro
-            string nome = txtNome.Text;
-            string email = txtEmail.Text;
-            string senha = txtSenha.Text;
+            string nome = txtNome.Text.Trim();
+            string login = txtLogin.Text.Trim();
+            string senha = txtSenha.Text.Trim();
             string perfil = ddlPerfil.SelectedValue;
 
-            // Aqui você pode salvar no banco de dados
+            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(senha) || string.IsNullOrEmpty(perfil))
+            {
+                lblMensagem.ForeColor = System.Drawing.Color.Red;
+                lblMensagem.Text = "Preencha todos os campos corretamente.";
+                return;
+            }
 
-            lblMensagem.Text = $"Usuário '{nome}' cadastrado com sucesso como {perfil}!";
+            // Aqui você pode salvar os dados no banco ou exibir uma mensagem
+            lblMensagem.ForeColor = System.Drawing.Color.Green;
+            lblMensagem.Text = $"Usuário '{nome}' cadastrado com sucesso!";
         }
     }
 }

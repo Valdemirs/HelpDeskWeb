@@ -2,137 +2,86 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 240px;
-            height: 100vh;
-            background-color: #f0f8ff;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .sidebar img {
-            width: 120px;
-            margin-bottom: 30px;
-        }
-
-        .menu-item {
-            width: 100%;
-            padding: 15px 20px;
-            text-align: left;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            color: #333;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .menu-item:hover {
-            background-color: #e0ecf8;
-        }
-
-        .menu-item i {
-            font-size: 18px;
-            color: #0078d7;
-        }
-
-        .menu-item.active {
-            background-color: #0078d7;
-            color: #fff;
-        }
-
-        .main-content {
-            margin-left: 240px;
-            padding: 30px;
-            min-height: 100vh;
-            background-color: #fff;
-            z-index: 1;
-        }
-
-        .cadastro-container {
-            max-width: 600px;
-            margin: 0 auto;
+        /* Título */
+        h2 {
+            font-size: 26px;
+            color: #2c3e50;
             text-align: center;
-        }
-
-        .cadastro-container h2 {
             margin-bottom: 30px;
-        }
-
-        .cadastro-btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 15px auto;
-            padding: 15px;
-            font-size: 18px;
             font-weight: bold;
-            background-color: #0078d7;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            text-transform: uppercase;
         }
 
-        .cadastro-btn:hover {
-            background-color: #005a9e;
+        /* Container geral dos cards */
+        .cadastro-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-        @media (max-width: 600px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 10px;
-            }
+        /* CARD PADRONIZADO COM CONFIGURAÇÃO */
+        .cadastro-card {
+            width: 220px; /* 🔹 mesmo tamanho do config */
+            background-color: #f0f8ff;
+            border-radius: 10px; /* 🔹 igual ao config */
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
 
-            .main-content {
-                margin-left: 0;
-                margin-top: 80px;
-            }
+        /* Efeito hover igual ao config */
+        .cadastro-card:hover {
+            transform: scale(1.03);
+            background-color: #e8f4ff;
+        }
 
-            .menu-item {
-                padding: 10px;
-                text-align: center;
-                justify-content: center;
+        /* Ícones */
+        .cadastro-card i {
+            font-size: 30px; /* 🔹 mesmo tamanho */
+            color: #0078d7;
+            margin-bottom: 12px;
+        }
+
+        /* Título dentro do card */
+        .cadastro-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        /* Descrição */
+        .cadastro-card p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .cadastro-card {
+                width: 90%;
             }
         }
     </style>
 
-    <div class="sidebar">
-        <img src="Images/logo.png" alt="Logo FAST HELP" />
-        <a class="menu-item" href="Dashboard.aspx"><i class="fas fa-chart-line"></i> DASHBOARD</a>
-        <a class="menu-item" href="Chamados.aspx"><i class="fas fa-ticket-alt"></i> CHAMADOS</a>
-        <a class="menu-item" href="Equipe.aspx"><i class="fas fa-users"></i> EQUIPE</a>
-        <a class="menu-item" href="Clientes.aspx"><i class="fas fa-user-tie"></i> CLIENTES</a>
-        <a class="menu-item" href="Configuracao.aspx"><i class="fas fa-cogs"></i> CONFIGURAÇÃO</a>
-        <a class="menu-item active" href="Cadastro.aspx"><i class="fas fa-cogs"></i> CADASTRO</a>
-    </div>
+    <h2>Cadastro</h2>
 
-    <div class="main-content">
-        <div class="cadastro-container">
-            <h2>Escolha o tipo de cadastro</h2>
-            <asp:Button ID="btnUsuario" runat="server" Text="Cadastrar Usuário" CssClass="cadastro-btn" OnClick="btnUsuario_Click" />
-            <asp:Button ID="btnCliente" runat="server" Text="Cadastrar Cliente" CssClass="cadastro-btn" OnClick="btnCliente_Click" />
-            <asp:Button ID="btnFornecedor" runat="server" Text="Cadastrar Fornecedor" CssClass="cadastro-btn" OnClick="btnFornecedor_Click" />
-        </div>
+    <div class="cadastro-container">
+        <!-- Botão Cadastrar Cliente -->
+        <asp:LinkButton ID="btnCliente" runat="server" CssClass="cadastro-card" OnClick="btnCliente_Click">
+            <i class="fas fa-user-tie"></i>
+            <h3>Cadastrar Cliente</h3>
+            <p>Adicione novos clientes ao sistema.</p>
+        </asp:LinkButton>
+
+        <!-- Botão Cadastrar Usuário -->
+        <asp:LinkButton ID="btnUsuario" runat="server" CssClass="cadastro-card" OnClick="btnUsuario_Click">
+            <i class="fas fa-user-plus"></i>
+            <h3>Cadastrar Usuário</h3>
+            <p>Crie contas de acesso para a equipe.</p>
+        </asp:LinkButton>
     </div>
 </asp:Content>

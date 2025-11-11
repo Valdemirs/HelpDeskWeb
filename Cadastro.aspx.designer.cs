@@ -15,30 +15,21 @@ namespace HelpDeskWeb
     {
 
         /// <summary>
-        /// Controle btnUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUsuario;
-
-        /// <summary>
         /// Controle btnCliente.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCliente;
+        protected global::System.Web.UI.WebControls.LinkButton btnCliente;
 
         /// <summary>
-        /// Controle btnFornecedor.
+        /// Controle btnUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFornecedor;
+        protected global::System.Web.UI.WebControls.LinkButton btnUsuario;
     }
 }
