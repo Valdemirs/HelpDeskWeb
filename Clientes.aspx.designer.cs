@@ -11,11 +11,7 @@ namespace HelpDeskWeb
 {
 
 
-<<<<<<<< HEAD:index.aspx.designer.cs
-    public partial class index
-========
     public partial class Clientes
->>>>>>>> Bd:Clientes.aspx.designer.cs
     {
 
         /// <summary>
